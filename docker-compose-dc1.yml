@@ -9,7 +9,7 @@ services:
     volumes:
       - "./scylla/scylla.yaml:/etc/scylla/scylla.yaml"
       - "./scylla/cassandra-rackdc.properties.dc1.r1:/etc/scylla/cassandra-rackdc.properties"
-      - "./scylla/mutant-data.txt:/mutant-data.txt"
+      - "./scylla/create_ks_db.txt:/create_ks_db.txt"
     networks:
       web:
 
