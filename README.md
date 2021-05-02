@@ -181,6 +181,19 @@ repair/3201ff14-6e8f-72b2-875c-d3c73f524410
 ```
 * https://docs.scylladb.com/operating-scylla/manager/1.4/repair-a-cluster/
 
+### Decommissioning DC
+* https://docs.scylladb.com/operating-scylla/procedures/cluster-management/decommissioning_data_center/
+
+### Other tasks
+* Remove node
+https://docs.scylladb.com/operating-scylla/procedures/cluster-management/remove_node/
+* Add a Decommissioned Node Back to a Scylla Cluster
+https://docs.scylladb.com/operating-scylla/procedures/cluster-management/revoke_decommission/
+* Replace seed node
+https://docs.scylladb.com/operating-scylla/procedures/cluster-management/replace_seed_node/
+
+
+
 ## Help
 
 Documentation:
