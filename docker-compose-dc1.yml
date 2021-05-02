@@ -10,6 +10,10 @@ services:
       - "./scylla/scylla.yaml:/etc/scylla/scylla.yaml"
       - "./scylla/cassandra-rackdc.properties.dc1.r1:/etc/scylla/cassandra-rackdc.properties"
       - "./scylla/create_ks_db.cql:/create_ks_db.cql"
+      - "./scylla/run_inserts.sh:/run_inserts.sh"
+      - "./scylla/cassandra_LCS_profile.yaml:/cassandra_LCS_profile.yaml"
+      - "./scylla/cassandra_STCS_profile.yaml:/cassandra_STCS_profile.yaml"
+      - "./scylla/cassandra_TWCS_profile.yaml:/cassandra_TWCS_profile.yaml"
     networks:
       web:
 

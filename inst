@@ -1,0 +1,16 @@
+1. run NORTH cluster:
+docker-compose -f docker-compose-dc1.yml up -d
+(fix seed's in case)
+
+2. Create keyspace:
+docker exec -it sample_scylla-node1_1 cqlsh -e "SOURCE './create_ks_db.cql'"
+
+3. Populate date: 
+
+docker exec -it sample_scylla-node1_1 ./run_inserts.sh
+
+check: docker exec -it sample_scylla-node1_1 cqlsh -e "select count(*) from test_keyspace.tab_TWCS"
+
+
+
+cassandra-stress user profile=./cassandra_inserts.yaml no-warmup ops\(insert=1\) n=100 -rate threads=1 -node 192.168.128.2,192.168.128.3,192.168.128.4

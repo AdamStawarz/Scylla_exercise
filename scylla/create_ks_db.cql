@@ -25,4 +25,4 @@ WITH compaction = {
   'class' : 'TimeWindowCompactionStrategy',
   'compaction_window_unit' : 'MINUTES',
   'compaction_window_size' : 30}
-AND default_time_to_live = 60;
+AND default_time_to_live = 3600;
