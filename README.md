@@ -1,4 +1,5 @@
 # Scylla_Exercise_1
+
 ## Description
 
 * Create a 3 nodes cluster, with one datacenter 
@@ -21,20 +22,9 @@ each of the nodes in a different rack , dc:north, racks north1, north2, north3
 
 * Linux, docker, docker-compose
 
-### Installing
-
-* Cluster parameters are under:
-    * cassandra-rackdc.properties..* 
-    * scylla.yaml
-
-
-* If you want to use bash to populate data, check this:
-    * run_serts.sh
-
-
 ### Create Clusters
 
-* How to run first cluster(north):
+* To create first cluster(north):
 
 ```
 $ docker-compose -f docker-compose-dc1.yml up -d
@@ -98,7 +88,6 @@ UN  192.168.160.4  91.26 KB   256          ?       149e12c3-dcfa-4ab7-b4b1-4b1d9
     - cassandra_STCS_profile.yaml
     - cassandra_TWCS_profile.yaml    
     - cassandra_LCS_profile.yaml
-
     
     COMMANDS: 
     (use proper IP's)
@@ -153,6 +142,44 @@ sudo systemctl restart scylla-server
 ````
 
 ### Install Manager (docker)
+
+* https://hub.docker.com/r/scylladb/scylla-manager
+
+### Install Agents (docker)
+* install agent on each node and populate token ()
+```
+$ yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+$ curl -o /etc/yum.repos.d/scylla-manager.repo -L http://downloads.scylladb.com/rpm/centos/scylladb-manager-2.2.repo
+$ yum install scylla-manager-agent
+```
+
+* Add auth token to the yaml:
+    * generate token: 
+    ```
+    $ scyllamgr_auth_token_gen
+    ```
+    * share the same token on each node:
+    ```
+    vi /etc/scylla-manager-agent/scylla-manager-agent.yaml
+    ```
+    * run service
+    ```
+    scylla-manager-agent -c /etc/scylla-manager-agent/scylla-manager-agent.yaml &
+    ```
+### Add cluster to manager:
+
+```
+docker exec -it scylla-manager sctool cluster add -c <cluster_name> --host=<host_ip> --auth-token=token
+1a0feeba-5b38-4cc4-949e-6bd704667552
+```
+### Manager tasks
+
+* Fire repair:
+```
+sctool repair -c prod-cluster
+repair/3201ff14-6e8f-72b2-875c-d3c73f524410
+```
+* https://docs.scylladb.com/operating-scylla/manager/1.4/repair-a-cluster/
 
 ## Help
 
