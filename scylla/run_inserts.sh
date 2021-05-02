@@ -10,14 +10,6 @@ echo first_name,last_name,location > temp_data.csv
 
 declare -a arr=("Adam" "Alberto" "Felipe" "Amihay" "Pawel" "Blue" "Sujan")
 
-  # for i in {0..10000}
-  #   do
-  #     first_name=$[$RANDOM % ${#arr[@]}]
-  #     last_name=$[$RANDOM % ${#arr[@]}]
-  # INSERT='cqlsh -e "INSERT INTO test_keyspace.tab_STCS (first_name,last_name,location) VALUES ('"'${arr[$first_name]}'"','"'${arr[$last_name]}'"', '$RANDOM') IF NOT EXISTS;"'
-  # eval $INSERT
-  # done
-
 echo Creating CSV "temp_data.csv"
 
 for i in {1..10000}

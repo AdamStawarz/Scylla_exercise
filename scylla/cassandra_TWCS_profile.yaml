@@ -11,7 +11,7 @@ table: tab_twcs
 
 # The CQL for creating a table you wish to stress (optional if it already exists)
 table_definition: |
-  CREATE TABLE tab_tab_twcs (
+  CREATE TABLE tab_twcs (
         title text,
         size int,
         published_date timeuuid,
@@ -19,7 +19,7 @@ table_definition: |
         material text,
         PRIMARY KEY(title, size)
   ) WITH compaction = {'class' : 'TimeWindowCompactionStrategy','compaction_window_unit' : 'MINUTES','compaction_window_size' : 30}
-    AND default_time_to_live = 60
+    AND default_time_to_live = 3600
 
 ### Column Distribution Specifications ###
 
